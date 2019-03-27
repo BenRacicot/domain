@@ -203,24 +203,30 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
                 $(this).removeClass('input-error');
             });
 
+            // to submit the form programatically 
+            if (valid_form === true) {
+                document.getElementById("makeOfferForm").submit();
+            }
 
             // When using FormSpree you dont need to post anything anywhere
-            if (valid_form === true) {
-                $.ajax({
-                    type: "POST",
-                    url: 'https://formspree.io/benjaminracicot@gmail.com',
-                    // url: makeOfferForm.attr('action'),
-                    data: self.serialize()
-                })
-                .done(function(response) {
-                    self[0].reset();
-                    console.log(response);
-                    contactResponse(responseNode, "success", response);
-                })
-                .fail(function(data) {
-                    contactResponse(responseNode, "error", data.responseText);
-                });
-            }
+            // if (valid_form === true) {
+            //     $.ajax({
+            //         // type: "POST", jQuery < 1.9.0
+            //         method: "POST",
+            //         url: 'https://formspree.io/benjaminracicot@gmail.com',
+            //         // url: makeOfferForm.attr('action'),
+            //         // data: self.serialize()
+            //         dataType: "json"
+            //     })
+            //     .done(function(response) {
+            //         self[0].reset();
+            //         console.log(response);
+            //         contactResponse(responseNode, "success", response);
+            //     })
+            //     .fail(function(data) {
+            //         contactResponse(responseNode, "error", data.responseText);
+            //     });
+            // }
 
         });
     };
