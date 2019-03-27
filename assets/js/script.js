@@ -205,21 +205,22 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
 
 
             // When using FormSpree you dont need to post anything anywhere
-            // if (valid_form === true) {
-            //     $.ajax({
-            //         type: "POST",
-            //         url: makeOfferForm.attr('action'),
-            //         data: self.serialize()
-            //     })
-            //     .done(function(response) {
-            //         self[0].reset();
-            //         console.log(response);
-            //         contactResponse(responseNode, "success", response);
-            //     })
-            //     .fail(function(data) {
-            //         contactResponse(responseNode, "error", data.responseText);
-            //     });
-            // }
+            if (valid_form === true) {
+                $.ajax({
+                    type: "POST",
+                    url: 'https://formspree.io/benjaminracicot@gmail.com',
+                    // url: makeOfferForm.attr('action'),
+                    data: self.serialize()
+                })
+                .done(function(response) {
+                    self[0].reset();
+                    console.log(response);
+                    contactResponse(responseNode, "success", response);
+                })
+                .fail(function(data) {
+                    contactResponse(responseNode, "error", data.responseText);
+                });
+            }
 
         });
     };
