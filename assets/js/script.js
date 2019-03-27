@@ -1,18 +1,8 @@
 
 /*
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-  Domain Broker & Domain For Sale Template
-––––––––––––––––––––––––––––––––––––––––––––––
-
-    - File           : script.js
-    - Desc           : Template - JavaScript
-    - Version        : 1.0.0
-    - Date           : 2017-04-14
-    - Author         : EvenThemes
-    - Author URI     : https://themeforest.net/user/eventhemes
-    - Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template/19769673?ref=EvenThemes
-
-––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+Version        : 1.0.0
+Author URI     : https://themeforest.net/user/eventhemes
+Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template/19769673?ref=EvenThemes
 */
 
 
