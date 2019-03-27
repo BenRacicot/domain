@@ -1,22 +1,37 @@
-# Test Domain Landing System
+<!DOCTYPE html>
+<html lang="en">
 
-Simple landing page for any domain. Point DNS records to DLS, optionally add TXT records and instanly have a clean domain landing page.
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{.Title}}">
+    <meta name="author" content="{{.Title}}">
 
-## Usage
+    <title>{{.Title}}</title>
 
-- Using docker compose
+    <!-- Bootstrap Core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-```
-$ docker-compose up -d
-```
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-## DNS setup
+    <!-- Theme CSS -->
+    <link href="static/css/site.css" rel="stylesheet">
 
-- Add TXT records for setting title and subtitle of page. if no txt records are set the default value is the request host header for the title and blank subtitle
-
-
-```
-Type: TXT Name:@ Value: dls_title=Title For page
-
-Type: TXT Name:@ Value: dls_subtitle=The sub title
-```
+</head>
+<body id="page-top" class="index">
+    <header>
+        <div class="container">
+            <div class="intro-text">            
+                <div class="intro-heading">{{.Title}}</div>
+                <div class="intro-lead-in">{{.SubTitle}}</div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
