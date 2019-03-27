@@ -1,0 +1,49 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 12/04/2017 18:06
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-html:before { content: "\f100"; }
+.flaticon-content:before { content: "\f101"; }
+.flaticon-coding:before { content: "\f102"; }
+.flaticon-domain-registration:before { content: "\f103"; }
+.flaticon-upload:before { content: "\f104"; }
+.flaticon-url:before { content: "\f105"; }
+.flaticon-file:before { content: "\f106"; }
+.flaticon-house-key-1:before { content: "\f107"; }
+.flaticon-broken-link-1:before { content: "\f108"; }
+.flaticon-house-key:before { content: "\f109"; }
+.flaticon-unlink-symbol:before { content: "\f10a"; }
+.flaticon-keyword:before { content: "\f10b"; }
+.flaticon-broken-link:before { content: "\f10c"; }
+.flaticon-keywords:before { content: "\f10d"; }
+.flaticon-link-symbol:before { content: "\f10e"; }
+.flaticon-presentation:before { content: "\f10f"; }
+.flaticon-bar-chart:before { content: "\f110"; }
+.flaticon-settings:before { content: "\f111"; }
+.flaticon-responsive:before { content: "\f112"; }
+.flaticon-line-chart:before { content: "\f113"; }
