@@ -2,10 +2,10 @@
 
 	// Set the recipient email address.
     // FIXME: Update this to your desired email address.
-    $recipient = "eventhemes.contact@gmail.com";
+    $recipient = "benjaminracicot@gmail.com";
 
     // FIXME: Update this to your desired email subject
-    $subject = "Domain.com New Bid";
+    $subject = "Domain Bid";
 
     // Only process POST reqeusts.
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
