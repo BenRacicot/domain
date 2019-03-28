@@ -64,6 +64,8 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
     var bodySelector = $("body"),
     htmlAndBody = $("html, body"),
     windowSelector = $(window);
+
+    var googleScriptURL = 'https://script.google.com/macros/s/AKfycbzgGBS6H-Kmf7xQTOGSUAxYGXPQRerJX02tVfOCokcRgdkzTRoA/exec';
     var $makeOfferForm = $('form#makeOfferForm');
 
     // Google form https://github.com/jamiewilson/form-to-google-sheets
@@ -273,26 +275,26 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
                 console.log(makeOfferForm);
 
                 // https://github.com/jamiewilson/form-to-google-sheets
-                fetch(scriptURL, { method: 'POST', body: new FormData(makeOfferForm) })
+                fetch(googleScriptURL, { method: 'POST', body: new FormData(makeOfferForm) })
                     .then(response => console.log('Success!', response))
                     .catch(error => console.error('Error!', error.message))
 
                 // Domain theme
-                // $.ajax({
-                //     method: "GET",
-                //     url: 'https://script.google.com/macros/s/AKfycbzgGBS6H-Kmf7xQTOGSUAxYGXPQRerJX02tVfOCokcRgdkzTRoA/exec',
-                //     data: makeOfferForm.serializeObject(),
-                //     dataType: "json",
-                // })
-                // .done(function(response) {
-                //     self[0].reset();
-                //     console.log(response);
-                //     contactResponse(responseNode, "success", response);
-                // })
-                // .fail(function(data) {
-                //     console.log(data);
-                //     contactResponse(responseNode, "error", data.responseText);
-                // });
+                $.ajax({
+                    method: "POST",
+                    url: googleScriptURL,
+                    data: makeOfferForm.serializeObject(),
+                    dataType: "json",
+                })
+                .done(function(response) {
+                    self[0].reset();
+                    console.log(response);
+                    contactResponse(responseNode, "success", response);
+                })
+                .fail(function(data) {
+                    console.log(data);
+                    contactResponse(responseNode, "error", data.responseText);
+                });
             }
 
         });
