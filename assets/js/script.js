@@ -256,19 +256,19 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
     function getDomainName() {
         var domainInput = document.getElementsByName("domainName");
 
+        // for actual domain name
+        var hostname = location.hostname;
+        var domainArray = hostname.split(".");
+        domainArray.shift();
+        var hostDomain = domainArray.join(".");
+
         // use GET param 'domain' to get the name eg. domain.com?domain=somedomain.com
         var url_string = window.location.href;
         var url = new URL(url_string);
-        var domainName = url.searchParams.get("domain") !== null ? url.searchParams.get("domain") : 'Your domain';
+        var domainName = url.searchParams.get("domain") !== null ? url.searchParams.get("domain") : hostDomain;
         
         // add the domain name into the hidden domainName input field
         domainInput.value = domainName;
-
-        // for actual domain name
-        // var hostname = location.hostname;
-        // var domainArray = hostname.split(".");
-        // domainArray.shift();
-        // var domainName = domainArray.join(".");
 
         $('#domainName').text(domainName);
         $('input#domainName, textarea#domainName').val(domainName);

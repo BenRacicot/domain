@@ -10,7 +10,13 @@
     height:auto;
 }
 
-
+h1{
+    display:block;
+}
+h1 .domain-name{
+    display:block;
+    width:100%;
+}
 
 
 
