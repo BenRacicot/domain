@@ -276,25 +276,25 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
 
                 // https://github.com/jamiewilson/form-to-google-sheets
                 fetch(googleScriptURL, { method: 'POST', body: new FormData(makeOfferForm) })
-                    .then(response => console.log('Success!', response))
-                    .catch(error => console.error('Error!', error.message))
+                    .then(response => contactResponse(responseNode, "success", response))
+                    .catch(error => contactResponse(responseNode, "error", data.responseText))
 
                 // Domain theme
-                $.ajax({
-                    method: "POST",
-                    url: googleScriptURL,
-                    data: makeOfferForm.serializeObject(),
-                    dataType: "json",
-                })
-                .done(function(response) {
-                    self[0].reset();
-                    console.log(response);
-                    contactResponse(responseNode, "success", response);
-                })
-                .fail(function(data) {
-                    console.log(data);
-                    contactResponse(responseNode, "error", data.responseText);
-                });
+                // $.ajax({
+                //     method: "POST",
+                //     url: googleScriptURL,
+                //     data: makeOfferForm.serializeObject(),
+                //     dataType: "json",
+                // })
+                // .done(function(response) {
+                //     self[0].reset();
+                //     console.log(response);
+                //     contactResponse(responseNode, "success", response);
+                // })
+                // .fail(function(data) {
+                //     console.log(data);
+                //     contactResponse(responseNode, "error", data.responseText);
+                // });
             }
 
         });
