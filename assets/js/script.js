@@ -231,7 +231,7 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
                 $.ajax({
                     method: "GET",
                     url: 'https://script.google.com/macros/s/AKfycbzgGBS6H-Kmf7xQTOGSUAxYGXPQRerJX02tVfOCokcRgdkzTRoA/exec',
-                    data: $form.serializeObject(),
+                    data: self.serializeObject(),
                     dataType: "json",
                 })
                 .done(function(response) {
