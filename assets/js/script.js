@@ -1,3 +1,13 @@
+/**
+ * jQuery serializeObject
+ * @copyright 2014, macek <paulmacek@gmail.com>
+ * @link https://github.com/macek/jquery-serialize-object
+ * @license BSD
+ * @version 2.5.0
+ */
+!function (e, i) { if ("function" == typeof define && define.amd) define(["exports", "jquery"], function (e, r) { return i(e, r) }); else if ("undefined" != typeof exports) { var r = require("jquery"); i(exports, r) } else i(e, e.jQuery || e.Zepto || e.ender || e.$) }(this, function (e, i) { function r(e, r) { function n(e, i, r) { return e[i] = r, e } function a(e, i) { for (var r, a = e.match(t.key); void 0 !== (r = a.pop());)if (t.push.test(r)) { var u = s(e.replace(/\[\]$/, "")); i = n([], u, i) } else t.fixed.test(r) ? i = n([], r, i) : t.named.test(r) && (i = n({}, r, i)); return i } function s(e) { return void 0 === h[e] && (h[e] = 0), h[e]++ } function u(e) { switch (i('[name="' + e.name + '"]', r).attr("type")) { case "checkbox": return "on" === e.value ? !0 : e.value; default: return e.value } } function f(i) { if (!t.validate.test(i.name)) return this; var r = a(i.name, u(i)); return l = e.extend(!0, l, r), this } function d(i) { if (!e.isArray(i)) throw new Error("formSerializer.addPairs expects an Array"); for (var r = 0, t = i.length; t > r; r++)this.addPair(i[r]); return this } function o() { return l } function c() { return JSON.stringify(o()) } var l = {}, h = {}; this.addPair = f, this.addPairs = d, this.serialize = o, this.serializeJSON = c } var t = { validate: /^[a-z_][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i, key: /[a-z0-9_]+|(?=\[\])/gi, push: /^$/, fixed: /^\d+$/, named: /^[a-z0-9_]+$/i }; return r.patterns = t, r.serializeObject = function () { return new r(i, this).addPairs(this.serializeArray()).serialize() }, r.serializeJSON = function () { return new r(i, this).addPairs(this.serializeArray()).serializeJSON() }, "undefined" != typeof i.fn && (i.fn.serializeObject = r.serializeObject, i.fn.serializeJSON = r.serializeJSON), e.FormSerializer = r, r });
+
+
 
 /*
 Version        : 1.0.0
@@ -13,6 +23,11 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
     var bodySelector = $("body"),
     htmlAndBody = $("html, body"),
     windowSelector = $(window);
+
+    // Google form https://github.com/jamiewilson/form-to-google-sheets
+    // var scriptURL = 'https://script.google.com/macros/s/AKfycbzgGBS6H-Kmf7xQTOGSUAxYGXPQRerJX02tVfOCokcRgdkzTRoA/exec';
+    // var form = document.forms['submit-to-google-sheet'];
+
 
     /* -------------------------------------
         Data Background Image
@@ -174,6 +189,8 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
         });
     };
 
+
+
     var makeOfferForm = function() {
         var makeOfferForm = $("#makeOfferForm");
         var responseNode = $('#offerFormResponse');
@@ -208,25 +225,24 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
                 document.getElementById("makeOfferForm").submit();
             }
 
+            // https://medium.com/@dmccoy/how-to-submit-an-html-form-to-google-sheets-without-google-forms-b833952cc175
             // When using FormSpree you dont need to post anything anywhere
-            // if (valid_form === true) {
-            //     $.ajax({
-            //         // type: "POST", jQuery < 1.9.0
-            //         method: "POST",
-            //         url: 'https://formspree.io/benjaminracicot@gmail.com',
-            //         // url: makeOfferForm.attr('action'),
-            //         // data: self.serialize()
-            //         dataType: "json"
-            //     })
-            //     .done(function(response) {
-            //         self[0].reset();
-            //         console.log(response);
-            //         contactResponse(responseNode, "success", response);
-            //     })
-            //     .fail(function(data) {
-            //         contactResponse(responseNode, "error", data.responseText);
-            //     });
-            // }
+            if (valid_form === true) {
+                $.ajax({
+                    method: "GET",
+                    url: 'https://script.google.com/macros/s/AKfycbzgGBS6H-Kmf7xQTOGSUAxYGXPQRerJX02tVfOCokcRgdkzTRoA/exec',
+                    data: $form.serializeObject(),
+                    dataType: "json",
+                })
+                .done(function(response) {
+                    self[0].reset();
+                    console.log(response);
+                    contactResponse(responseNode, "success", response);
+                })
+                .fail(function(data) {
+                    contactResponse(responseNode, "error", data.responseText);
+                });
+            }
 
         });
     };
