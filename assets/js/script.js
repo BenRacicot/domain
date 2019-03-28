@@ -238,7 +238,7 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
         var responseNode = $('#offerFormResponse');
         makeOfferForm.on("submit", function(e) {
             e.preventDefault();
-
+            console.log();
             var self = $(this);
             var valid_form = true;
             var bid = $("#offerFormBid");
@@ -263,9 +263,9 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
             });
 
             // to submit the form programatically 
-            if (valid_form === true) {
-                document.getElementById("makeOfferForm").submit();
-            }
+            // if (valid_form === true) {
+            //     document.getElementById("makeOfferForm").submit();
+            // }
 
             // https://medium.com/@dmccoy/how-to-submit-an-html-form-to-google-sheets-without-google-forms-b833952cc175
             // When using FormSpree you dont need to post anything anywhere
@@ -276,7 +276,7 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
                 //     .then(response => console.log('Success!', response))
                 //     .catch(error => console.error('Error!', error.message))
                 console.log(makeOfferForm);
-                
+
                 // Domain theme
                 $.ajax({
                     method: "GET",
