@@ -249,6 +249,14 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
         var domainName = domainArray.join(".");
         $('#domainName').text(domainName);
         $('input#domainName, textarea#domainName').val(domainName);
+
+
+        // replace span.domain-name text everywhere with domain name
+        var nameInstances = document.getElementsByClassName("domain-name");
+        for (let i = 0, j = nameInstances.length; i < j; i++) {
+            $(nameInstances[i]).text(domainName);
+        }
+
     };
 
 
