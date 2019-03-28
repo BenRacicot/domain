@@ -270,29 +270,29 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
             // https://medium.com/@dmccoy/how-to-submit-an-html-form-to-google-sheets-without-google-forms-b833952cc175
             // When using FormSpree you dont need to post anything anywhere
             if (valid_form === true) {
-
-                // https://github.com/jamiewilson/form-to-google-sheets
-                // fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                //     .then(response => console.log('Success!', response))
-                //     .catch(error => console.error('Error!', error.message))
                 console.log(makeOfferForm);
 
+                // https://github.com/jamiewilson/form-to-google-sheets
+                fetch(scriptURL, { method: 'POST', body: new FormData(makeOfferForm) })
+                    .then(response => console.log('Success!', response))
+                    .catch(error => console.error('Error!', error.message))
+
                 // Domain theme
-                $.ajax({
-                    method: "GET",
-                    url: 'https://script.google.com/macros/s/AKfycbzgGBS6H-Kmf7xQTOGSUAxYGXPQRerJX02tVfOCokcRgdkzTRoA/exec',
-                    data: makeOfferForm.serializeObject(),
-                    dataType: "json",
-                })
-                .done(function(response) {
-                    self[0].reset();
-                    console.log(response);
-                    contactResponse(responseNode, "success", response);
-                })
-                .fail(function(data) {
-                    console.log(data);
-                    contactResponse(responseNode, "error", data.responseText);
-                });
+                // $.ajax({
+                //     method: "GET",
+                //     url: 'https://script.google.com/macros/s/AKfycbzgGBS6H-Kmf7xQTOGSUAxYGXPQRerJX02tVfOCokcRgdkzTRoA/exec',
+                //     data: makeOfferForm.serializeObject(),
+                //     dataType: "json",
+                // })
+                // .done(function(response) {
+                //     self[0].reset();
+                //     console.log(response);
+                //     contactResponse(responseNode, "success", response);
+                // })
+                // .fail(function(data) {
+                //     console.log(data);
+                //     contactResponse(responseNode, "error", data.responseText);
+                // });
             }
 
         });
