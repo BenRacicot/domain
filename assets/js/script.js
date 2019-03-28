@@ -242,7 +242,25 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
         });
     };
 
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+
+
     function getDomainName() {
+
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var d = url.searchParams.get("domain");
+        console.log(d);
+
+
         var hostname = location.hostname;
         var domainArray = hostname.split(".");
         domainArray.shift();
