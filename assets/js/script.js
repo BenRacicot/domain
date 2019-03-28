@@ -172,6 +172,7 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
         return false;
     };
     var contactResponse = function(responseNode, type, response) {
+        console.log(response);
         if (type === "success") {
             responseNode.removeClass('text-error').addClass('text-valid');
         } else {
@@ -275,26 +276,26 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
                 console.log(makeOfferForm);
 
                 // https://github.com/jamiewilson/form-to-google-sheets
-                fetch(googleScriptURL, { method: 'POST', body: new FormData(makeOfferForm) })
-                    .then(response => contactResponse(responseNode, "success", response))
-                    .catch(error => contactResponse(responseNode, "error", data.responseText))
+                // fetch(googleScriptURL, { method: 'POST', body: new FormData(makeOfferForm) })
+                //     .then(response => contactResponse(responseNode, "success", response))
+                //     .catch(error => contactResponse(responseNode, "error", data.responseText))
 
                 // Domain theme
-                // $.ajax({
-                //     method: "POST",
-                //     url: googleScriptURL,
-                //     data: makeOfferForm.serializeObject(),
-                //     dataType: "json",
-                // })
-                // .done(function(response) {
-                //     self[0].reset();
-                //     console.log(response);
-                //     contactResponse(responseNode, "success", response);
-                // })
-                // .fail(function(data) {
-                //     console.log(data);
-                //     contactResponse(responseNode, "error", data.responseText);
-                // });
+                $.ajax({
+                    method: "POST",
+                    url: googleScriptURL,
+                    data: makeOfferForm.serializeObject(),
+                    dataType: "json",
+                })
+                .done(function(response) {
+                    self[0].reset();
+                    console.log(response);
+                    contactResponse(responseNode, "success", response);
+                })
+                .fail(function(data) {
+                    console.log(data);
+                    contactResponse(responseNode, "error", data.responseText);
+                });
             }
 
         });
