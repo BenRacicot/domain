@@ -252,11 +252,19 @@ Template URI   : https://themeforest.net/item/domain-broker-domain-sale-template
     }
 
 
+    /* ------------------------------------------------------------------------ *  
+        The best way to make the site display the correct domain name is
+        forward the domain with masking enabled
 
+        getDomainName() checks to see if you havent done so
+        The way this works now is to check to see if a 'domain' URL param exists
+        If it does exist use that value as the domain name in question
+        Otherwise use the hostname
+    * ------------------------------------------------------------------------ */
     function getDomainName() {
         var domainInput = document.getElementsByName("domainName");
 
-        // for actual domain name
+        // get actual domain name
         var hostname = location.hostname;
 
         // use GET param 'domain' to get the name eg. domain.com?domain=somedomain.com
