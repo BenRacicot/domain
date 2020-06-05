@@ -3930,6 +3930,8 @@ fieldset[disabled] .btn {
 @media screen and (min-width: 992px) {
   .hero-area .h-full {
     height: 100vh;
+    display: flex;
+    align-items: center;
   }
 }
 @media screen and (max-width: 991px) {
@@ -3956,7 +3958,7 @@ fieldset[disabled] .btn {
   opacity: .7;
 }
 .hero-overlay-gradient {
-  background: linear-gradient(to right, rgba(0, 31, 189, 0.75), rgba(17, 24, 60, 0.6));
+  background: linear-gradient(to right, rgba(23, 52, 204, 0.75), rgba(17, 24, 60, 0.6));
 }
 .hero-area .hero-content,
 .hero-area .breadcrumb-area {
